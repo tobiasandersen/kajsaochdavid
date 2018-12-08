@@ -1,0 +1,79 @@
+.images {
+  justify-content: center;
+  display: flex;
+  margin: 50px auto;
+  width: 90%;
+}
+
+.david {
+  height: auto;
+  margin-right: 5px;
+  width: 50%;
+}
+
+.kajsa {
+  height: auto;
+  margin-left: 5px;
+  width: 50%;
+}
+
+.content {
+  margin-top: 100px;
+}
+
+.content h1,
+.content h2 {
+  text-align: center;
+}
+
+.section {
+  margin: 100px auto;
+  width: 90%;
+}
+
+.section h3 {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: none;
+}
+
+.info-list li {
+  align-items: center;
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.info-list .icon {
+  display: flex;
+  justify-content: center;
+  width: 50px;
+}
+
+.info-list svg {
+  margin-right: 10px;
+  height: 40px;
+}
+
+.faq {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: none;
+}
+
+.faq li {
+  margin-bottom: 45px;
+}
+
+.faq span {
+  font-weight: bold;
+  margin-bottom: 45px;
+}
