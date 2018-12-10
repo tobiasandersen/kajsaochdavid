@@ -1,22 +1,45 @@
 .header {
+  background: #f0f9f2;
   height: 60px;
   position: fixed;
   top: 0;
+  z-index: 10;
   width: 100%;
+}
+
+.wrap {
+  margin: 0 auto;
+  max-width: 820px;
 }
 
 .links {
   display: flex;
-  height: 60px;
+  height: 100%;
   align-items: center;
   justify-content: space-between;
-  margin: 0 auto;
+  font-family: proxima_nova_condensedregular;
   width: 90%;
 }
 
-.links a {
+.links button {
+  border: none;
+  padding: 0;
+  background: none;
   color: #222;
   text-decoration: none;
+  outline: none;
+}
+
+.links .osa-button {
+  background: #ee7770;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 10px 16px;
+  line-height: 1;
+  border-radius: 4px;
+  font-family: proxima_nova_condensedbold;
 }
 
 .close-button {
@@ -37,4 +60,34 @@
 
 .close-button svg {
   margin-right: 4px;
+}
+
+@media screen and (min-width: 460px) {
+  .links {
+    width: 85%;
+  }
+
+  .links button {
+    font-size: 18px;
+  }
+
+  .links .osa-button {
+    font-size: 18px;
+    padding: 10px 18px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .header {
+    height: 80px;
+  }
+
+  .links button {
+    font-size: 20px;
+  }
+
+  .links .osa-button {
+    font-size: 18px;
+    padding: 10px 22px;
+  }
 }

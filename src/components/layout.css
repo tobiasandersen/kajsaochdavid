@@ -626,8 +626,19 @@ pre tt:after {
 }
 
 .page {
-  height: 100%;
+  min-height: 100%;
+  position: relative;
   width: 100%;
+}
+
+.main {
+  padding-top: 60px;
+  flex: 1 0 0;
+  font-family: proxima_nova_condensedregular;
+}
+
+.main h1, h2, h3, p, button {
+  font-family: proxima_nova_condensedregular;
 }
 
 .city-footer {
@@ -635,5 +646,13 @@ pre tt:after {
   margin-top: 200px;
   position: fixed;
   bottom: 0;
+  flex: 0 0 auto;
   width: 100%;
+}
+
+html,
+body,
+#___gatsby,
+#___gatsby > div {
+  height: 100%;
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default () => (
-  <section className="section" id="faq">
+  <section className="section wrap" id="faq">
     <h3>FAQ</h3>
     <ul className="faq">
       <li>

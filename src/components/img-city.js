@@ -20,7 +20,7 @@ const Image = () => (
         placeholderImage: file(relativePath: { eq: "city.png" }) {
           childImageSharp {
             fluid(maxWidth: 1080) {
-              ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid_tracedSVG
             }
           }
         }

@@ -6,7 +6,7 @@ import Header from './header'
 import City from '../components/img-city'
 import './layout.css'
 
-const Layout = ({ children }) => (
+const Layout = ({ children, measureRef, didScroll }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -29,9 +29,14 @@ const Layout = ({ children }) => (
           <html lang="en" />
         </Helmet>
         <div className="page">
-          <Header siteTitle={data.site.siteMetadata.title} />
-          {children}
-          <div className="city-footer">
+          <Header
+            didScroll={didScroll}
+            siteTitle={data.site.siteMetadata.title}
+          />
+          <div className="main">
+            {children}
+          </div>
+          <div className="city-footer" ref={measureRef}>
             <City />
           </div>
         </div>

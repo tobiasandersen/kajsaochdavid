@@ -1,28 +1,101 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import CloseIcon from './icon-close'
 import Portal from './portal'
 import './header.css'
 
 export default class Header extends React.Component {
-  state = { showForm: false, height: 0, width: 0 }
+  state = { showForm: false, didScroll: false, height: 0, width: 0 }
 
-  render () {
-    const { showForm } = this.state
+  onScroll = () => {
+    const top = window.pageYOffset || document.documentElement.scrollTop
+
+    if (top < 30 && this.state.didScroll) {
+      this.setState({ didScroll: false, activeSection: null })
+      return
+    }
+
+    if (top > 30 && !this.state.didScroll) {
+      this.setState({ didScroll: true })
+    }
+
+    const activeSection = ['info', 'guests', 'faq', 'toastmaster'].find(id => {
+      const el = document.getElementById(id)
+      const rect = el.getBoundingClientRect()
+      const position = rect.top + (rect.height / 2)
+      return position > 20 && position < rect.height + 100
+    })
+
+    this.setState({ activeSection })
+  }
+
+  componentDidMount() {
+    document.addEventListener('scroll', this.onScroll)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('scroll', this.onScroll)
+  }
+
+  onClick = id => () => {
+    const el = document.getElementById(id)
+
+    if (!el) {
+      return
+    }
+
+    const rect = el.getBoundingClientRect()
+    const top = window.pageYOffset || document.documentElement.scrollTop
+    window.scroll({
+      left: 0,
+      top: rect.y - 100 + top,
+      behavior: 'smooth',
+    })
+  }
+
+  render() {
+    const { showForm, didScroll, activeSection } = this.state
+    const activeStyle = { borderBottom: '1px solid #222' }
 
     return (
-      <div className="header">
-        <div className="links">
-          <Link to="#info">Info</Link>
-          <Link to="/gaster">Gäster</Link>
-          <Link to="/faq">FAQ</Link>
-          <Link to="/Toastmaster">Toastmaster</Link>
+      <div
+        className="header"
+        style={{
+          boxShadow: didScroll ? '0 1px 20px -5px rgba(0, 0, 0, 0.5)' : '',
+          transition: 'box-shadow .2s ease',
+        }}
+      >
+        <div className="links wrap">
           <button
+            style={{ ...(activeSection === 'info' ? activeStyle : {}) }}
+            onClick={this.onClick('info')}
+          >
+            Info
+          </button>
+          <button
+            style={{ ...(activeSection === 'guests' ? activeStyle : {}) }}
+            onClick={this.onClick('guests')}
+          >
+            Gäster
+          </button>
+          <button
+            style={{ ...(activeSection === 'faq' ? activeStyle : {}) }}
+            onClick={this.onClick('faq')}
+          >
+            FAQ
+          </button>
+          <button
+            style={{ ...(activeSection === 'toastmaster' ? activeStyle : {}) }}
+            onClick={this.onClick('toastmaster')}
+          >
+            Toastmaster
+          </button>
+          <button
+            className="osa-button"
             onClick={() => {
               this.setState({
                 showForm: !this.state.showForm,
                 width: window.innerWidth,
-                height: window.innerHeight
+                height: window.innerHeight,
               })
             }}
           >
@@ -30,24 +103,30 @@ export default class Header extends React.Component {
           </button>
         </div>
         <Portal>
-          <div style={{
-            opacity: showForm ? 1 : 0,
-            pointerEvents: showForm ? 'auto' : 'none',
-            position: 'fixed',
-            top: 80,
-            width: '100%',
-            zIndex: 2
-          }}>
-            <button className='close-button' onClick={() => {
-              console.log('clicked')
-              this.setState({ showForm: false })
-            }}>
+          <div
+            style={{
+              opacity: showForm ? 1 : 0,
+              pointerEvents: showForm ? 'auto' : 'none',
+              position: 'fixed',
+              top: 40,
+              width: '100%',
+              zIndex: 20,
+            }}
+          >
+            <button
+              className="close-button"
+              onClick={() => {
+                console.log('clicked')
+                this.setState({ showForm: false })
+              }}
+            >
               <CloseIcon /> Stäng
             </button>
             <iframe
-              title='O.S.A' src="https://docs.google.com/forms/d/e/1FAIpQLScdhSZ5x3Zyq67YgN-kpetbEuzMy5jnxkeBev-LKWm0Jjc4Gg/viewform?embedded=true&hl=se"
+              title="O.S.A"
+              src="https://docs.google.com/forms/d/e/1FAIpQLScdhSZ5x3Zyq67YgN-kpetbEuzMy5jnxkeBev-LKWm0Jjc4Gg/viewform?embedded=true&hl=se"
               width={this.state.width * 0.9}
-              height={this.state.height - 160}
+              height={this.state.height - 60}
               style={{ marginLeft: '5%' }}
               frameBorder="0"
               marginHeight="0"

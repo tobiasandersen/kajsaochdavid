@@ -1,7 +1,24 @@
+@font-face {
+  font-family: 'proxima_nova_condensedbold';
+  src: url('../fonts/proximanovacond-bold-webfont.woff2') format('woff2'),
+    url('../fonts/proximanovacond-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'proxima_nova_condensedregular';
+  src: url('../fonts/proximanovacond-reg-webfont.woff2') format('woff2'),
+    url('../fonts/proximanovacond-reg-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .images {
   justify-content: center;
   display: flex;
-  margin: 50px auto;
+  margin: 0 auto;
+  max-width: 800px;
   width: 90%;
 }
 
@@ -18,7 +35,22 @@
 }
 
 .content {
-  margin-top: 100px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section a,
+.section a:visited {
+  color: #222;
+  border-bottom: 1px solid #222;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.section a:hover {
+  border-bottom: 2px solid #222;
 }
 
 .content h1,
@@ -27,13 +59,29 @@
 }
 
 .section {
-  margin: 100px auto;
-  width: 90%;
+  margin: 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0;
+  width: 86%;
 }
 
 .section h3 {
   font-size: 32px;
   margin-bottom: 40px;
+}
+
+#guests h3 {
+  color: #a27b38;
+}
+
+#info h3 {
+  color: #34667b
+}
+
+#toastmaster h3 {
+  color: #a74f4f
 }
 
 .info-list {
@@ -44,10 +92,18 @@
   padding: none;
 }
 
+p,
+ul li {
+  max-width: 720px;
+}
+
 .info-list li {
   align-items: center;
   display: flex;
-  margin-bottom: 30px;
+}
+
+.info-list li + li {
+  margin-top: 30px;
 }
 
 .info-list .icon {
@@ -76,4 +132,62 @@
 .faq span {
   font-weight: bold;
   margin-bottom: 45px;
+}
+
+.intro {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.intro svg {
+  width: 86%;
+}
+
+@media screen and (min-width: 460px) {
+  .main {
+    font-size: 1.15em;
+  }
+
+  .section h3 {
+    font-size: 48px;
+  }
+
+  .images {
+    width: 90%;
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .city-footer {
+    margin-top: 0;
+    position: absolute;
+    bottom: 0;
+    flex: 0 0 auto;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .images {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+
+  .david {
+    margin-right: 25px;
+  }
+
+  .kajsa {
+    margin-left: 25px;
+  }
+
+  .section {
+    padding: 100px 0;
+  }
+
+  #intro {
+    padding-top: 0;
+  }
 }

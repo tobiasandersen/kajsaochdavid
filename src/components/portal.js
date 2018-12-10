@@ -1,7 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 
-export default class Portal extends Component {
+export default class Portal extends React.Component {
+  state = {}
+  
+  componentDidMount () {
+    this.setState({ didMount: true })
+  }
+
   componentWillUnmount() {
     if (this.defaultNode) {
       document.body.removeChild(this.defaultNode)
@@ -13,9 +19,13 @@ export default class Portal extends Component {
   render() {
     const { node, children, className, style } = this.props
 
+    if (!this.state.didMount) {
+      return null
+    }
+
     if (!node && !this.defaultNode) {
       this.defaultNode = document.createElement('div')
-      
+
       if (style) {
         this.defaultNode.style = style
       }

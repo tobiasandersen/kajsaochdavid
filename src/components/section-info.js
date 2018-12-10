@@ -5,7 +5,7 @@ import WeddingCardIcon from '../components/icon-wedding-card'
 import WeddingRingIcon from '../components/icon-wedding-ring'
 
 export default () => (
-  <section className="section" id="info">
+  <section className="section wrap" id="info">
     <h3>Info</h3>
     <ul className="info-list">
       <li>
@@ -17,6 +17,8 @@ export default () => (
           <a
             href="https://goo.gl/maps/2hgLV32EfMn"
             alt="Google Maps to S:t Pauli Kyrka"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             S:t Pauli Kyrka
           </a>{' '}
@@ -32,10 +34,12 @@ export default () => (
           <a
             href="https://goo.gl/maps/AsyE7mSMDQD2"
             alt="Google Maps to S:t Pauli Kyrka"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Snoge Loge
           </a>{' '}
-          så länge vi
+          så länge vi orkar.
         </p>
       </li>
       <li>
@@ -46,7 +50,7 @@ export default () => (
       </li>
       <li>
         <span className="icon">
-          <WeddingCardIcon style={{height: 36 }}/>
+          <WeddingCardIcon style={{ height: 36 }}/>
         </span>
         <p>Vi vill veta om du kan komma senast den 1 mars 2019.</p>
       </li>
