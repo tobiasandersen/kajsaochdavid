@@ -11,16 +11,16 @@ import Measure from 'react-measure'
 const sections = [
   [IntroSection, 'transparent'],
   [InfoSection, '#eaf8ff'],
-  [GuestsSection, '#fff5e5'],
   [FaqSection, '#fafafa'],
-  [ToastermasterSection, '#f9f0f0']
+  [ToastermasterSection, '#f9f0f0'],
+  [GuestsSection, '#fff5e5']
 ]
 
 class IndexPage extends React.Component {
-  state = { contentHeight: 0, footerHeight: 0 }
+  state = { contentHeight: 0, footerHeight: 0, pageHeight: 0 }
 
   render () {
-    const { contentHeight, footerHeight, didScroll } = this.state
+    const { contentHeight, footerHeight } = this.state
 
     return (
       <Measure
@@ -29,11 +29,11 @@ class IndexPage extends React.Component {
           const pageHeight = window.innerHeight
           const footerHeight = footerRect.bounds.height
           const contentHeight = pageHeight - footerHeight - 60
-          this.setState({ footerHeight, contentHeight })
+          this.setState({ pageHeight, footerHeight, contentHeight })
         }}
       >
         {({ measureRef }) => (
-          <Layout measureRef={measureRef} didScroll={didScroll}>
+          <Layout measureRef={measureRef} {...this.state}>
             {sections.map(([Component, color], idx) => (
               <div key={idx} style={{
                 background: color,

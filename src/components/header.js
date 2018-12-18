@@ -2,11 +2,12 @@ import React from 'react'
 import CloseIcon from './icon-close'
 import Portal from './portal'
 import './header.css'
+import debounce from 'lodash/debounce'
 
 export default class Header extends React.Component {
   state = { showForm: false, didScroll: false, height: 0, width: 0 }
 
-  onScroll = () => {
+  onScroll = debounce(() => {
     const top = window.pageYOffset || document.documentElement.scrollTop
 
     if (top < 30 && this.state.didScroll) {
@@ -26,7 +27,7 @@ export default class Header extends React.Component {
     })
 
     this.setState({ activeSection })
-  }
+  }, 100)
 
   componentDidMount() {
     document.addEventListener('scroll', this.onScroll)
@@ -72,12 +73,6 @@ export default class Header extends React.Component {
             Info
           </button>
           <button
-            style={{ ...(activeSection === 'guests' ? activeStyle : {}) }}
-            onClick={this.onClick('guests')}
-          >
-            Gäster
-          </button>
-          <button
             style={{ ...(activeSection === 'faq' ? activeStyle : {}) }}
             onClick={this.onClick('faq')}
           >
@@ -88,6 +83,12 @@ export default class Header extends React.Component {
             onClick={this.onClick('toastmaster')}
           >
             Toastmaster
+          </button>
+          <button
+            style={{ ...(activeSection === 'guests' ? activeStyle : {}) }}
+            onClick={this.onClick('guests')}
+          >
+            Gäster
           </button>
           <button
             className="osa-button"
@@ -109,6 +110,7 @@ export default class Header extends React.Component {
               pointerEvents: showForm ? 'auto' : 'none',
               position: 'fixed',
               top: 40,
+              height: (this.props.pageHeight || 40) - 40,
               width: '100%',
               zIndex: 20,
             }}
@@ -116,18 +118,17 @@ export default class Header extends React.Component {
             <button
               className="close-button"
               onClick={() => {
-                console.log('clicked')
                 this.setState({ showForm: false })
               }}
             >
               <CloseIcon /> Stäng
             </button>
             <iframe
+              className='osa-form'
               title="O.S.A"
               src="https://docs.google.com/forms/d/e/1FAIpQLScdhSZ5x3Zyq67YgN-kpetbEuzMy5jnxkeBev-LKWm0Jjc4Gg/viewform?embedded=true&hl=se"
-              width={this.state.width * 0.9}
-              height={this.state.height - 60}
-              style={{ marginLeft: '5%' }}
+              height={this.props.pageHeight - 60}
+              style={{ margin: '0' }}
               frameBorder="0"
               marginHeight="0"
               marginWidth="0"

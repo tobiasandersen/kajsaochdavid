@@ -6,7 +6,7 @@ import Header from './header'
 import City from '../components/img-city'
 import './layout.css'
 
-const Layout = ({ children, measureRef, didScroll }) => (
+const Layout = ({ children, measureRef, pageHeight }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -30,7 +30,7 @@ const Layout = ({ children, measureRef, didScroll }) => (
         </Helmet>
         <div className="page">
           <Header
-            didScroll={didScroll}
+            pageHeight={pageHeight}
             siteTitle={data.site.siteMetadata.title}
           />
           <div className="main">
