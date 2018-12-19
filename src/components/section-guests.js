@@ -2,7 +2,6 @@ import React from 'react'
 import Guest from './guest'
 
 export default ({ guests }) => {
-  console.log({guests})
   return (
     <section className="section wrap" id="guests">
       <h3>Gäster</h3>
