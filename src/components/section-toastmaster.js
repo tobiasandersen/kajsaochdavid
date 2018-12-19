@@ -3,6 +3,11 @@ import React from 'react'
 export default () => (
   <section className="section wrap" id="toastmaster">
     <h3>Toastmaster</h3>
+    <p>
+      Kvällens toastmaster heter Jonas Bengtsson. Jonas kommer att se till så
+      att kvällen flyter på, på bästa möjliga sätt. Om ni vill hålla tal eller
+      bjuda på annan underhållning så meddela Jonas senast den 1/8.
+    </p>
     <h4>Tips</h4>
     <ul>
       <li>
