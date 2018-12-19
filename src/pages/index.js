@@ -7,6 +7,7 @@ import FaqSection from '../components/section-faq'
 import ToastermasterSection from '../components/section-toastmaster'
 import GuestsSection from '../components/section-guests'
 import Measure from 'react-measure'
+import { graphql } from 'gatsby'
 
 const sections = [
   [IntroSection, 'transparent'],
@@ -21,6 +22,11 @@ class IndexPage extends React.Component {
 
   render () {
     const { contentHeight, footerHeight } = this.state
+    const {
+      data: {
+        allMarkdownRemark: { edges },
+      },
+    } = this.props
 
     return (
       <Measure
@@ -43,7 +49,7 @@ class IndexPage extends React.Component {
                 flexDirection: 'column',
                 minHeight: contentHeight
               }}>
-                <Component />
+                <Component guests={edges} />
               </div>
             ))}
           </Layout>
@@ -52,5 +58,28 @@ class IndexPage extends React.Component {
     )
   }
 }
+
+export const pageQuery = graphql`
+  query {
+    allMarkdownRemark(sort: { order: ASC, fields: [frontmatter___order] }) {
+      edges {
+        node {
+          html
+          frontmatter {
+            name
+            role
+            image {
+              childImageSharp {
+                fluid(maxWidth: 100) {
+                  ...GatsbyImageSharpFluid_tracedSVG
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
 
 export default IndexPage
