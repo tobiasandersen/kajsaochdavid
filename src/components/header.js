@@ -106,11 +106,10 @@ export default class Header extends React.Component {
         <Portal>
           <div
             style={{
-              opacity: showForm ? 1 : 0,
-              pointerEvents: showForm ? 'auto' : 'none',
+              display: showForm ? 'block' : 'none',
               position: 'fixed',
               top: 40,
-              height: (this.props.pageHeight || 40) - 40,
+              height: this.state.height - 40,
               width: '100%',
               zIndex: 20,
             }}
@@ -127,8 +126,8 @@ export default class Header extends React.Component {
               className='osa-form'
               title="O.S.A"
               src="https://docs.google.com/forms/d/e/1FAIpQLScdhSZ5x3Zyq67YgN-kpetbEuzMy5jnxkeBev-LKWm0Jjc4Gg/viewform?embedded=true&hl=se"
-              height={this.props.pageHeight - 60}
-              style={{ margin: '0' }}
+              height={this.state.height - 60}
+              style={{ margin: '0', height: this.state.height - 60 }}
               frameBorder="0"
               marginHeight="0"
               marginWidth="0"
