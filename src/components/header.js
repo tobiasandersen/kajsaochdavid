@@ -97,6 +97,7 @@ export default class Header extends React.Component {
                 showForm: !this.state.showForm,
                 width: window.innerWidth,
                 height: window.innerHeight,
+                iOS: /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
               })
             }}
           >
@@ -122,16 +123,21 @@ export default class Header extends React.Component {
             >
               <CloseIcon /> Stäng
             </button>
-            <iframe
-              className='osa-form'
-              title="O.S.A"
-              src="https://docs.google.com/forms/d/e/1FAIpQLScdhSZ5x3Zyq67YgN-kpetbEuzMy5jnxkeBev-LKWm0Jjc4Gg/viewform?embedded=true&hl=se"
-              height={this.state.height - 60}
-              style={{ margin: '0', height: this.state.height - 60 }}
-              frameBorder="0"
-              marginHeight="0"
-              marginWidth="0"
-            />
+            <div className='osa-form-wrapper' style={{
+              margin: '0',
+              height: this.state.height - 60,
+              overflow: this.state.iOS ? 'overlay' : 'hidden'
+            }}>
+              <iframe
+                scrolling={this.state.iOS ? 'no' : 'auto'}
+                className='osa-form'
+                title="O.S.A"
+                src="https://docs.google.com/forms/d/e/1FAIpQLScdhSZ5x3Zyq67YgN-kpetbEuzMy5jnxkeBev-LKWm0Jjc4Gg/viewform?embedded=true&hl=se"
+                frameBorder="0"
+                marginHeight="0"
+                marginWidth="0"
+              />
+            </div>
           </div>
         </Portal>
       </div>

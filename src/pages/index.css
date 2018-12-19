@@ -208,9 +208,10 @@ ul li {
   grid-gap: 25px;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 840px) {
   .guest-list {
     grid-template-columns: 1fr 1fr;
+    grid-gap: 40px;
   }
 }
 

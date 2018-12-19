@@ -7,13 +7,19 @@
   width: 100%;
 }
 
-.osa-form {
+.osa-form-wrapper {
+  -webkit-overflow-scrolling: touch;
   max-width: 640px;
-  width: 100%;
-  margin: 0 auto;
-  position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  margin: 0 auto;
+  position: absolute;
+  width: 100%;
+}
+
+.osa-form {
+  height: 100%;
+  width: 100%
 }
 
 .wrap {
