@@ -19,7 +19,7 @@ export default class Header extends React.Component {
       this.setState({ didScroll: true })
     }
 
-    const activeSection = ['info', 'guests', 'faq', 'toastmaster'].find(id => {
+    const activeSection = ['info', 'faq', 'toastmaster', 'guests' ].find(id => {
       const el = document.getElementById(id)
       const rect = el.getBoundingClientRect()
       const position = rect.top + (rect.height / 2)
