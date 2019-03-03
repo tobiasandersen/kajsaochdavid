@@ -8,6 +8,13 @@ export default () => (
       att kvällen flyter på, på bästa möjliga sätt. Om ni vill hålla tal eller
       bjuda på annan underhållning så meddela Jonas senast den 1/8.
     </p>
+    <h4>Kontaktuppgifter</h4>
+    <p>
+      Email: <a href="mailto:jonas.bengtsson@gmail.com">jonas.bengtsson@gmail.com</a>
+    </p>
+    <p>
+      Tel: <a href="tel:0767-640396">0767-640396</a>
+    </p>
     <h4>Tips</h4>
     <ul>
       <li>
